@@ -18,7 +18,7 @@ class ExpLTH(Function):
         # To check if the operator is equal to identity, and visa versa with H dependence on position.
         if self.h_p_dependence:
             self.F_dependence = set(position for idx, position in enumerate(position_vars) if momentum_vars[idx] in h_vars)
-            self.d_hamiltonian = Matrix([diff(hamiltonian, p) for p in momentum_vars])
+            self.d_hamiltonian = -Matrix([diff(hamiltonian, p) for p in momentum_vars])
         elif self.h_q_dependence:
             self.F_dependence = set(momentum for idx, momentum in enumerate(momentum_vars) if position_vars[idx] in h_vars)
             self.d_hamiltonian = Matrix([diff(hamiltonian, q) for q in position_vars])
